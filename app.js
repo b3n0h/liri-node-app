@@ -1,6 +1,7 @@
 require("dotenv").config()
 const fs = require('fs')
 const request = require('request')
+const moment = require('moment')
 // const spotify = Spotify(keys.spotify)
 
 if (process.argv[2] == 'concert-this') {
@@ -13,7 +14,7 @@ if (process.argv[2] == 'concert-this') {
       let result = JSON.parse(body)
       console.log('Venue name: ' + result[1].venue.name)
       console.log('Venue location: ' + result[1].venue.city)
-      console.log('Concert date: ' + result[1].venue.city)
+      console.log('Concert date: ' + moment(result[1].datetime).format('MM/DD/YYYY'))
     }
   })
 }
